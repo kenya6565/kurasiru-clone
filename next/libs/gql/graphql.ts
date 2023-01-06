@@ -72,7 +72,12 @@ export type GetRecipeQueryVariables = Exact<{
 
 export type GetRecipeQuery = {
   __typename: "Query";
-  recipe?: { __typename: "Recipe"; id?: string | null } | null;
+  recipe?: {
+    __typename: "Recipe";
+    id?: string | null;
+    title?: string | null;
+    subTitle?: string | null;
+  } | null;
 };
 
 export const GetRecipeDocument = {
@@ -112,6 +117,8 @@ export const GetRecipeDocument = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "subTitle" } },
               ],
             },
           },

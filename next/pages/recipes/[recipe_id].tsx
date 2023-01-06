@@ -12,6 +12,8 @@ const GET_RECIPE = graphql(`
   query GetRecipe($recipeId: ID) {
     recipe(id: $recipeId) {
       id
+      title 
+      subTitle
     }
   }
 `);
@@ -73,7 +75,9 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
   return recipe ? (
     <>
       <Header />
-      {/* <div>{recipe.id}</div> */}
+      <div>{recipe.id}</div>
+      <div>{recipe.title}</div>
+      <div>{recipe.subTitle}</div>
       <FooterContainerUpper />
       <FooterContainerLower />
     </>
