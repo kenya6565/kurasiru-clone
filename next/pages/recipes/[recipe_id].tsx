@@ -15,6 +15,7 @@ const GET_RECIPE = graphql(`
       id
       title
       subTitle
+      introduction
     }
   }
 `);
@@ -145,7 +146,7 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                   margin-bottom: 20px;
                 `}
               >
-                とろーりチーズが美味しい、チーズイン煮込みハンバーグのご紹介です。ソースはデミグラスソースとカットトマト缶を使うことで、コクがありながらもあっさりといただけますよ。お好みできのこや、生のトマトを加えても美味しくいただけます。お好きな野菜などを加えてアレンジしてお楽しみくださいね。
+              {recipe.introduction}
               </div>
               <div>調理時間：30分</div>
               <div>費用目安：500円前後</div>

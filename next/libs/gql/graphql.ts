@@ -47,6 +47,7 @@ export type QueryRecipeArgs = {
 export type Recipe = {
   __typename: "Recipe";
   id?: Maybe<Scalars["ID"]>;
+  introduction?: Maybe<Scalars["String"]>;
   subTitle?: Maybe<Scalars["String"]>;
   title?: Maybe<Scalars["String"]>;
 };
@@ -77,6 +78,7 @@ export type GetRecipeQuery = {
     id?: string | null;
     title?: string | null;
     subTitle?: string | null;
+    introduction?: string | null;
   } | null;
 };
 
@@ -119,6 +121,10 @@ export const GetRecipeDocument = {
                 { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "subTitle" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "introduction" },
+                },
               ],
             },
           },
