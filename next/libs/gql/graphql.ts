@@ -47,6 +47,8 @@ export type QueryRecipeArgs = {
 export type Recipe = {
   __typename: "Recipe";
   id?: Maybe<Scalars["ID"]>;
+  subTitle?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
 };
 
 export type Todo = {

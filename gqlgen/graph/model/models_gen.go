@@ -8,7 +8,9 @@ type NewTodo struct {
 }
 
 type Recipe struct {
-	ID *string `json:"id"`
+	ID       *string `json:"id"`
+	Title    *string `json:"title"`
+	SubTitle *string `json:"subTitle"`
 }
 
 type Todo struct {
