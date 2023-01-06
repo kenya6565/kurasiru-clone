@@ -12,6 +12,7 @@ type Recipe struct {
 	Title        *string `json:"title"`
 	SubTitle     *string `json:"subTitle"`
 	Introduction *string `json:"introduction"`
+	Video        *Video  `json:"video"`
 }
 
 type Todo struct {
@@ -25,4 +26,10 @@ type User struct {
 	ID         string  `json:"id"`
 	Name       string  `json:"name"`
 	PictureURL *string `json:"pictureUrl"`
+}
+
+type Video struct {
+	ThumbnailURL *string `json:"thumbnailUrl"`
+	Source       *string `json:"source"`
+	Type         *string `json:"type"`
 }

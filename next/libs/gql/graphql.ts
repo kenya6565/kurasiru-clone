@@ -50,6 +50,7 @@ export type Recipe = {
   introduction?: Maybe<Scalars["String"]>;
   subTitle?: Maybe<Scalars["String"]>;
   title?: Maybe<Scalars["String"]>;
+  video?: Maybe<Video>;
 };
 
 export type Todo = {
@@ -67,6 +68,13 @@ export type User = {
   pictureUrl?: Maybe<Scalars["String"]>;
 };
 
+export type Video = {
+  __typename: "Video";
+  source?: Maybe<Scalars["String"]>;
+  thumbnailUrl?: Maybe<Scalars["String"]>;
+  type?: Maybe<Scalars["String"]>;
+};
+
 export type GetRecipeQueryVariables = Exact<{
   recipeId?: InputMaybe<Scalars["ID"]>;
 }>;
@@ -79,6 +87,11 @@ export type GetRecipeQuery = {
     title?: string | null;
     subTitle?: string | null;
     introduction?: string | null;
+    video?: {
+      __typename: "Video";
+      thumbnailUrl?: string | null;
+      source?: string | null;
+    } | null;
   } | null;
 };
 
@@ -124,6 +137,23 @@ export const GetRecipeDocument = {
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "introduction" },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "video" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "thumbnailUrl" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "source" },
+                      },
+                    ],
+                  },
                 },
               ],
             },

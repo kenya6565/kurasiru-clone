@@ -16,6 +16,10 @@ const GET_RECIPE = graphql(`
       title
       subTitle
       introduction
+      video{
+        thumbnailUrl
+        source
+      }
     }
   }
 `);
@@ -102,7 +106,7 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
               width="560"
               height="560"
               preload="auto"
-              poster="images/humberg-thumbnail.jpg"
+              poster={recipe.video.thumbnailUrl}
               controls="controls"
               controlslist="nodownload"
               muted="muted"
@@ -110,7 +114,7 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
               data-v-2932eb4e=""
             >
               <source
-                src="videos/humburg.mp4"
+                src={recipe.video.source}
                 type="video/mp4"
                 data-v-049f9628=""
               />
