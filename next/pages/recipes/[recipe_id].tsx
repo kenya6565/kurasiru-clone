@@ -7,12 +7,13 @@ import { Header } from "../../components/header/Header";
 import { client } from "../../libs/apolloClient";
 import { graphql } from "../../libs/gql/gql";
 import { GetRecipeQuery } from "../../libs/gql/graphql";
+import { css } from "@emotion/react";
 
 const GET_RECIPE = graphql(`
   query GetRecipe($recipeId: ID) {
     recipe(id: $recipeId) {
       id
-      title 
+      title
       subTitle
     }
   }
@@ -75,9 +76,96 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
   return recipe ? (
     <>
       <Header />
-      <div>{recipe.id}</div>
-      <div>{recipe.title}</div>
-      <div>{recipe.subTitle}</div>
+      <main
+        css={css`
+          display: grid;
+          justify-content: center;
+          grid-template-columns: 680px 300px;
+          column-gap: 40px;
+          background-color: white;
+        `}
+      >
+        <section
+          css={css`
+            grid-column: 1 / 2;
+          `}
+        >
+          <div
+            css={css`
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            `}
+          >
+            <video
+              width="560"
+              height="560"
+              preload="auto"
+              poster="images/humberg-thumbnail.jpg"
+              controls="controls"
+              controlslist="nodownload"
+              muted="muted"
+              class="native"
+              data-v-2932eb4e=""
+            >
+              <source
+                src="videos/humburg.mp4"
+                type="video/mp4"
+                data-v-049f9628=""
+              />
+              <p data-v-049f9628="">
+                動画を再生するには、videoタグをサポートしたブラウザが必要です。
+              </p>
+            </video>
+
+            <div
+              css={css`
+                margin-bottom: 20px;
+              `}
+            >
+              <div
+                css={css`
+                  font-size: 22px;
+                  font-weight: 700;
+                `}
+              >
+                {recipe.title}レシピ・作り方
+              </div>
+              <div
+                css={css`
+                  font-size: 12px;
+                  margin-bottom: 20px;
+                  color: #635f5a;
+                `}
+              >
+                {recipe.subTitle}
+              </div>
+              <div
+                css={css`
+                  margin-bottom: 20px;
+                `}
+              >
+                とろーりチーズが美味しい、チーズイン煮込みハンバーグのご紹介です。ソースはデミグラスソースとカットトマト缶を使うことで、コクがありながらもあっさりといただけますよ。お好みできのこや、生のトマトを加えても美味しくいただけます。お好きな野菜などを加えてアレンジしてお楽しみくださいね。
+              </div>
+              <div>調理時間：30分</div>
+              <div>費用目安：500円前後</div>
+              <button
+                css={css`
+                  width: 300px;
+                  height: 50px;
+                  font-size: 14px;
+                  font-weight: 700;
+                  background-color: f0efef;
+                  border: none;
+                  border-radius: 25px;
+                `}
+              >
+                保存する
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
       <FooterContainerUpper />
       <FooterContainerLower />
     </>
