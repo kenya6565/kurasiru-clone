@@ -20,6 +20,18 @@ export type Scalars = {
   Float: number;
 };
 
+export type Ingredient = {
+  __typename: "Ingredient";
+  amount?: Maybe<Scalars["String"]>;
+  item?: Maybe<Scalars["String"]>;
+};
+
+export type Ingredients = {
+  __typename: "Ingredients";
+  list?: Maybe<Array<Maybe<Ingredient>>>;
+  servings?: Maybe<Scalars["String"]>;
+};
+
 export type Mutation = {
   __typename: "Mutation";
   createTodo: Todo;
@@ -47,6 +59,7 @@ export type QueryRecipeArgs = {
 export type Recipe = {
   __typename: "Recipe";
   id?: Maybe<Scalars["ID"]>;
+  ingredients?: Maybe<Ingredients>;
   introduction?: Maybe<Scalars["String"]>;
   subTitle?: Maybe<Scalars["String"]>;
   title?: Maybe<Scalars["String"]>;
@@ -91,6 +104,15 @@ export type GetRecipeQuery = {
       __typename: "Video";
       thumbnailUrl?: string | null;
       source?: string | null;
+    } | null;
+    ingredients?: {
+      __typename: "Ingredients";
+      servings?: string | null;
+      list?: Array<{
+        __typename: "Ingredient";
+        item?: string | null;
+        amount?: string | null;
+      } | null> | null;
     } | null;
   } | null;
 };
@@ -151,6 +173,36 @@ export const GetRecipeDocument = {
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "source" },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "ingredients" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "servings" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "list" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "item" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "amount" },
+                            },
+                          ],
+                        },
                       },
                     ],
                   },

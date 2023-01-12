@@ -2,17 +2,28 @@
 
 package model
 
+type Ingredient struct {
+	Item   *string `json:"item"`
+	Amount *string `json:"amount"`
+}
+
+type Ingredients struct {
+	Servings *string       `json:"servings"`
+	List     []*Ingredient `json:"list"`
+}
+
 type NewTodo struct {
 	Text   string `json:"text"`
 	UserID string `json:"userId"`
 }
 
 type Recipe struct {
-	ID           *string `json:"id"`
-	Title        *string `json:"title"`
-	SubTitle     *string `json:"subTitle"`
-	Introduction *string `json:"introduction"`
-	Video        *Video  `json:"video"`
+	ID           *string      `json:"id"`
+	Title        *string      `json:"title"`
+	SubTitle     *string      `json:"subTitle"`
+	Introduction *string      `json:"introduction"`
+	Ingredients  *Ingredients `json:"ingredients"`
+	Video        *Video       `json:"video"`
 }
 
 type Todo struct {
