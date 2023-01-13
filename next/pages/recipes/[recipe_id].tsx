@@ -203,71 +203,15 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                   <span>材料</span>
                   <span>{recipe.ingredients?.servings}</span>
                 </div>
-
-                <IngredientElement
-                  item={recipe.ingredients.list[0]?.item}
-                  amount={recipe.ingredients.list[0]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[1]?.item}
-                  amount={recipe.ingredients.list[1]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[2]?.item}
-                  amount={recipe.ingredients.list[2]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[3]?.item}
-                  amount={recipe.ingredients.list[3]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[4]?.item}
-                  amount={recipe.ingredients.list[4]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[5]?.item}
-                  amount={recipe.ingredients.list[5]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[6]?.item}
-                  amount={recipe.ingredients.list[6]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[7]?.item}
-                  amount={recipe.ingredients.list[7]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[8]?.item}
-                  amount={recipe.ingredients.list[8]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[9]?.item}
-                  amount={recipe.ingredients.list[9]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[10]?.item}
-                  amount={recipe.ingredients.list[10]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[11]?.item}
-                  amount={recipe.ingredients.list[11]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[12]?.item}
-                  amount={recipe.ingredients.list[12]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[13]?.item}
-                  amount={recipe.ingredients.list[13]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[14]?.item}
-                  amount={recipe.ingredients.list[14]?.amount}
-                />
-                <IngredientElement
-                  item={recipe.ingredients.list[15]?.item}
-                  amount={recipe.ingredients.list[15]?.amount}
-                />
+                {recipe.ingredients.list.map((list, index) => {
+                  return (
+                    <IngredientElement
+                      key={index}
+                      item={list?.item}
+                      amount={list?.amount}
+                    />
+                  );
+                })}
               </div>
             </div>
           </section>
