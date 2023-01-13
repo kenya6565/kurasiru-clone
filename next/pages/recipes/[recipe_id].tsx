@@ -85,288 +85,292 @@ export const getServerSideProps: GetServerSideProps<
 type RecipePageProps = GetRecipeQuery;
 
 const RecipePage = ({ recipe }: RecipePageProps) => {
-  return recipe ? (
-    <>
-      <Header />
-      <main
-        css={css`
-          display: grid;
-          justify-content: center;
-          grid-template-columns: 680px 300px;
-          column-gap: 40px;
-          background-color: white;
-        `}
-      >
-        <section
+  if (!recipe || !recipe.ingredients || !recipe.ingredients.list) {
+    return <></>;
+  } else {
+    return (
+      <>
+        <Header />
+        <main
           css={css`
-            grid-column: 1 / 2;
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 680px 300px;
+            column-gap: 40px;
+            background-color: white;
           `}
         >
-          <div
+          <section
             css={css`
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
+              grid-column: 1 / 2;
             `}
           >
-            <video
-              width="560"
-              height="560"
-              preload="auto"
-              poster={recipe.video.thumbnailUrl}
-              controls="controls"
-              controlslist="nodownload"
-              muted="muted"
-              class="native"
-              data-v-2932eb4e=""
-            >
-              <source
-                src={recipe.video.source}
-                type="video/mp4"
-                data-v-049f9628=""
-              />
-              <p data-v-049f9628="">
-                動画を再生するには、videoタグをサポートしたブラウザが必要です。
-              </p>
-            </video>
-
             <div
               css={css`
-                margin-bottom: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
               `}
             >
-              <div
-                css={css`
-                  font-size: 22px;
-                  font-weight: 700;
-                `}
+              <video
+                width="560"
+                height="560"
+                preload="auto"
+                poster={recipe.video.thumbnailUrl}
+                controls="controls"
+                controlslist="nodownload"
+                muted="muted"
+                class="native"
+                data-v-2932eb4e=""
               >
-                {recipe.title}レシピ・作り方
-              </div>
-              <div
-                css={css`
-                  font-size: 12px;
-                  margin-bottom: 20px;
-                  color: #635f5a;
-                `}
-              >
-                {recipe.subTitle}
-              </div>
-              <div
-                css={css`
-                  margin-bottom: 20px;
-                `}
-              >
-                {recipe.introduction}
-              </div>
-              <div>調理時間：30分</div>
-              <div>費用目安：500円前後</div>
-              <button
-                css={css`
-                  width: 300px;
-                  height: 50px;
-                  font-size: 14px;
-                  font-weight: 700;
-                  background-color: f0efef;
-                  border: none;
-                  border-radius: 25px;
-                `}
-              >
-                保存する
-              </button>
-            </div>
-            <div>
-              <div>
-                <span>材料</span>
-                <span>{recipe.ingredients?.servings}</span>
-              </div>
+                <source
+                  src={recipe.video.source}
+                  type="video/mp4"
+                  data-v-049f9628=""
+                />
+                <p data-v-049f9628="">
+                  動画を再生するには、videoタグをサポートしたブラウザが必要です。
+                </p>
+              </video>
 
               <div
                 css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
+                  margin-bottom: 20px;
                 `}
               >
-                <div>牛豚合びき肉</div>
-                <div>250g</div>
+                <div
+                  css={css`
+                    font-size: 22px;
+                    font-weight: 700;
+                  `}
+                >
+                  {recipe.title}レシピ・作り方
+                </div>
+                <div
+                  css={css`
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                    color: #635f5a;
+                  `}
+                >
+                  {recipe.subTitle}
+                </div>
+                <div
+                  css={css`
+                    margin-bottom: 20px;
+                  `}
+                >
+                  {recipe.introduction}
+                </div>
+                <div>調理時間：30分</div>
+                <div>費用目安：500円前後</div>
+                <button
+                  css={css`
+                    width: 300px;
+                    height: 50px;
+                    font-size: 14px;
+                    font-weight: 700;
+                    background-color: f0efef;
+                    border: none;
+                    border-radius: 25px;
+                  `}
+                >
+                  保存する
+                </button>
               </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>玉ねぎ</div>
-                <div>100g</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>ベビーチーズ</div>
-                <div>4個</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>卵 (Mサイズ)</div>
-                <div>1個</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>パン粉 (生)</div>
-                <div>大さじ2</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>牛乳</div>
-                <div>大さじ1</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>(A)ナツメグ</div>
-                <div>小さじ1</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>(A)塩こしょう</div>
-                <div>小さじ1/4</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>サラダ油</div>
-                <div>大さじ1</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>デミグラスソース</div>
-                <div>200g</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>カットトマト缶</div>
-                <div>100g</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>生クリーム</div>
-                <div>20ml</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>有塩バター</div>
-                <div>20g</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>赤ワイン</div>
-                <div>大さじ2</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>ウスターソース</div>
-                <div>大さじ1</div>
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>生クリーム</div>
-                <div>適量</div>
+              <div>
+                <div>
+                  <span>材料</span>
+                  <span>{recipe.ingredients?.servings}</span>
+                </div>
+
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>
+                    {recipe.ingredients.list[0]?.item}
+                  </div>
+                  <div>250g</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>玉ねぎ</div>
+                  <div>100g</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>ベビーチーズ</div>
+                  <div>4個</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>卵 (Mサイズ)</div>
+                  <div>1個</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>パン粉 (生)</div>
+                  <div>大さじ2</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>牛乳</div>
+                  <div>大さじ1</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>(A)ナツメグ</div>
+                  <div>小さじ1</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>(A)塩こしょう</div>
+                  <div>小さじ1/4</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>サラダ油</div>
+                  <div>大さじ1</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>デミグラスソース</div>
+                  <div>200g</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>カットトマト缶</div>
+                  <div>100g</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>生クリーム</div>
+                  <div>20ml</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>有塩バター</div>
+                  <div>20g</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>赤ワイン</div>
+                  <div>大さじ2</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>ウスターソース</div>
+                  <div>大さじ1</div>
+                </div>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0px;
+                    border-bottom: solid 1px #f4f2f0;
+                  `}
+                >
+                  <div>生クリーム</div>
+                  <div>適量</div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-      <FooterContainerUpper />
-      <FooterContainerLower />
-    </>
-  ) : (
-    <></>
-  );
+          </section>
+        </main>
+        <FooterContainerUpper />
+        <FooterContainerLower />
+      </>
+    );
+  }
 };
 
 export default RecipePage;
