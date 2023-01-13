@@ -83,6 +83,26 @@ export const getServerSideProps: GetServerSideProps<
 };
 
 type RecipePageProps = GetRecipeQuery;
+interface IngredientElementPros {
+  item: string | null | undefined;
+  amount: string | null | undefined;
+}
+
+const IngredientElement = ({ item, amount }: IngredientElementPros) => {
+  return (
+    <div
+      css={css`
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0px;
+        border-bottom: solid 1px #f4f2f0;
+      `}
+    >
+      <div>{item}</div>
+      <div>{amount}</div>
+    </div>
+  );
+};
 
 const RecipePage = ({ recipe }: RecipePageProps) => {
   if (!recipe || !recipe.ingredients || !recipe.ingredients.list) {
@@ -184,17 +204,10 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                   <span>{recipe.ingredients?.servings}</span>
                 </div>
 
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>{recipe.ingredients.list[0]?.item}</div>
-                  <div>{recipe.ingredients.list[0]?.amount}</div>
-                </div>
+                <IngredientElement
+                  item={recipe.ingredients.list[0]?.item}
+                  amount={recipe.ingredients.list[0]?.amount}
+                />
                 <div
                   css={css`
                     display: flex;
