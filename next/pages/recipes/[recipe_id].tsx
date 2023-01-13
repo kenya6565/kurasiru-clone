@@ -117,15 +117,17 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                 width="560"
                 height="560"
                 preload="auto"
-                poster={recipe.video.thumbnailUrl}
-                controls="controls"
-                controlslist="nodownload"
-                muted="muted"
-                class="native"
+                poster={
+                  recipe.video?.thumbnailUrl ? recipe.video.thumbnailUrl : ""
+                }
+                controls={true}
+                controlsList="nodownload"
+                muted={true}
+                className="native"
                 data-v-2932eb4e=""
               >
                 <source
-                  src={recipe.video.source}
+                  src={recipe.video?.source ? recipe.video.source : ""}
                   type="video/mp4"
                   data-v-049f9628=""
                 />
