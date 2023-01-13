@@ -208,171 +208,66 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                   item={recipe.ingredients.list[0]?.item}
                   amount={recipe.ingredients.list[0]?.amount}
                 />
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>玉ねぎ</div>
-                  <div>100g</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>ベビーチーズ</div>
-                  <div>4個</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>卵 (Mサイズ)</div>
-                  <div>1個</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>パン粉 (生)</div>
-                  <div>大さじ2</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>牛乳</div>
-                  <div>大さじ1</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>(A)ナツメグ</div>
-                  <div>小さじ1</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>(A)塩こしょう</div>
-                  <div>小さじ1/4</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>サラダ油</div>
-                  <div>大さじ1</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>デミグラスソース</div>
-                  <div>200g</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>カットトマト缶</div>
-                  <div>100g</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>生クリーム</div>
-                  <div>20ml</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>有塩バター</div>
-                  <div>20g</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>赤ワイン</div>
-                  <div>大さじ2</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>ウスターソース</div>
-                  <div>大さじ1</div>
-                </div>
-                <div
-                  css={css`
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0px;
-                    border-bottom: solid 1px #f4f2f0;
-                  `}
-                >
-                  <div>生クリーム</div>
-                  <div>適量</div>
-                </div>
+                <IngredientElement
+                  item={recipe.ingredients.list[1]?.item}
+                  amount={recipe.ingredients.list[1]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[2]?.item}
+                  amount={recipe.ingredients.list[2]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[3]?.item}
+                  amount={recipe.ingredients.list[3]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[4]?.item}
+                  amount={recipe.ingredients.list[4]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[5]?.item}
+                  amount={recipe.ingredients.list[5]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[6]?.item}
+                  amount={recipe.ingredients.list[6]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[7]?.item}
+                  amount={recipe.ingredients.list[7]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[8]?.item}
+                  amount={recipe.ingredients.list[8]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[9]?.item}
+                  amount={recipe.ingredients.list[9]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[10]?.item}
+                  amount={recipe.ingredients.list[10]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[11]?.item}
+                  amount={recipe.ingredients.list[11]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[12]?.item}
+                  amount={recipe.ingredients.list[12]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[13]?.item}
+                  amount={recipe.ingredients.list[13]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[14]?.item}
+                  amount={recipe.ingredients.list[14]?.amount}
+                />
+                <IngredientElement
+                  item={recipe.ingredients.list[15]?.item}
+                  amount={recipe.ingredients.list[15]?.amount}
+                />
               </div>
             </div>
           </section>
