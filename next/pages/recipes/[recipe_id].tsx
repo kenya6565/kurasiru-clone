@@ -8,6 +8,7 @@ import { client } from "../../libs/apolloClient";
 import { graphql } from "../../libs/gql/gql";
 import { GetRecipeQuery } from "../../libs/gql/graphql";
 import { css } from "@emotion/react";
+import IngredientElement from "../../components/recipe /IngredientElement";
 
 const GET_RECIPE = graphql(`
   query GetRecipe($recipeId: ID) {
@@ -83,26 +84,6 @@ export const getServerSideProps: GetServerSideProps<
 };
 
 type RecipePageProps = GetRecipeQuery;
-interface IngredientElementPros {
-  item: string | null | undefined;
-  amount: string | null | undefined;
-}
-
-const IngredientElement = ({ item, amount }: IngredientElementPros) => {
-  return (
-    <div
-      css={css`
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0px;
-        border-bottom: solid 1px #f4f2f0;
-      `}
-    >
-      <div>{item}</div>
-      <div>{amount}</div>
-    </div>
-  );
-};
 
 const RecipePage = ({ recipe }: RecipePageProps) => {
   if (!recipe || !recipe.ingredients || !recipe.ingredients.list) {
