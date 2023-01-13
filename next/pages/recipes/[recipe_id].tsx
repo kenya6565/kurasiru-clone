@@ -192,10 +192,8 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                     border-bottom: solid 1px #f4f2f0;
                   `}
                 >
-                  <div>
-                    {recipe.ingredients.list[0]?.item}
-                  </div>
-                  <div>250g</div>
+                  <div>{recipe.ingredients.list[0]?.item}</div>
+                  <div>{recipe.ingredients.list[0]?.amount}</div>
                 </div>
                 <div
                   css={css`
