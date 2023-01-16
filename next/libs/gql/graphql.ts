@@ -104,6 +104,7 @@ export type GetRecipeQuery = {
       __typename: "Video";
       thumbnailUrl?: string | null;
       source?: string | null;
+      type?: string | null;
     } | null;
     ingredients?: {
       __typename: "Ingredients";
@@ -174,6 +175,7 @@ export const GetRecipeDocument = {
                         kind: "Field",
                         name: { kind: "Name", value: "source" },
                       },
+                      { kind: "Field", name: { kind: "Name", value: "type" } },
                     ],
                   },
                 },

@@ -9,6 +9,7 @@ import { graphql } from "../../libs/gql/gql";
 import { GetRecipeQuery } from "../../libs/gql/graphql";
 import { css } from "@emotion/react";
 import IngredientElement from "../../components/recipe /IngredientElement";
+import VideoComponent from "../../components/recipe /VideoComponent";
 
 const GET_RECIPE = graphql(`
   query GetRecipe($recipeId: ID) {
@@ -20,6 +21,7 @@ const GET_RECIPE = graphql(`
       video {
         thumbnailUrl
         source
+        type
       }
       ingredients {
         servings
@@ -113,28 +115,13 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                 gap: 20px;
               `}
             >
-              <video
-                width="560"
-                height="560"
-                preload="auto"
-                poster={
+              <VideoComponent
+                thumbnailUrl={
                   recipe.video?.thumbnailUrl ? recipe.video.thumbnailUrl : ""
                 }
-                controls={true}
-                controlsList="nodownload"
-                muted={true}
-                className="native"
-                data-v-2932eb4e=""
-              >
-                <source
-                  src={recipe.video?.source ? recipe.video.source : ""}
-                  type="video/mp4"
-                  data-v-049f9628=""
-                />
-                <p data-v-049f9628="">
-                  動画を再生するには、videoタグをサポートしたブラウザが必要です。
-                </p>
-              </video>
+                source={recipe.video?.source ? recipe.video.source : ""}
+                type={recipe.video?.type ? recipe.video.type : ""}
+              />
 
               <div
                 css={css`
