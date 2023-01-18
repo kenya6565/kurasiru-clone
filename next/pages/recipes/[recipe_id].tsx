@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from "querystring";
 import { FooterContainerLower } from "../../components/footer/FooterContainerLower";
 import { FooterContainerUpper } from "../../components/footer/FooterContainerUpper";
 import { Header } from "../../components/header/Header";
+import { IngredientElement } from "../../components/recipe/IngredientElement";
 import { VideoComponent } from "../../components/recipe/VideoComponent";
 import { client } from "../../libs/apolloClient";
 import { graphql } from "../../libs/gql/gql";
@@ -160,17 +161,11 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
                 <span>(2人前)</span>
               </div>
 
-              <div
-                css={css`
-                  display: flex;
-                  justify-content: space-between;
-                  padding: 10px 0px;
-                  border-bottom: solid 1px #f4f2f0;
-                `}
-              >
-                <div>牛豚合びき肉</div>
-                <div>250g</div>
-              </div>
+              {/* `recipe.ingredients?.list && recipe.ingredients?.list[0] &&` がちょっと無理やり感あり */}
+              {recipe.ingredients?.list && recipe.ingredients?.list[0] && (
+                <IngredientElement fragment={recipe.ingredients?.list[0]} />
+              )}
+
               <div
                 css={css`
                   display: flex;
