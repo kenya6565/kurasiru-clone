@@ -7,29 +7,11 @@ import { Header } from "../../components/header/Header";
 import { client } from "../../libs/apolloClient";
 import { graphql } from "../../libs/gql/gql";
 import { GetRecipeQuery } from "../../libs/gql/graphql";
-import { css } from "@emotion/react";
-import IngredientElement from "../../components/recipe /IngredientElement";
-import VideoComponent from "../../components/recipe /VideoComponent";
 
 const GET_RECIPE = graphql(`
   query GetRecipe($recipeId: ID) {
     recipe(id: $recipeId) {
       id
-      title
-      subTitle
-      introduction
-      video {
-        thumbnailUrl
-        source
-        type
-      }
-      ingredients {
-        servings
-        list {
-          item
-          amount
-        }
-      }
     }
   }
 `);
@@ -88,109 +70,16 @@ export const getServerSideProps: GetServerSideProps<
 type RecipePageProps = GetRecipeQuery;
 
 const RecipePage = ({ recipe }: RecipePageProps) => {
-  if (!recipe || !recipe.ingredients || !recipe.ingredients.list) {
-    return <></>;
-  } else {
-    return (
-      <>
-        <Header />
-        <main
-          css={css`
-            display: grid;
-            justify-content: center;
-            grid-template-columns: 680px 300px;
-            column-gap: 40px;
-            background-color: white;
-          `}
-        >
-          <section
-            css={css`
-              grid-column: 1 / 2;
-            `}
-          >
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-              `}
-            >
-              <VideoComponent
-                thumbnailUrl={
-                  recipe.video?.thumbnailUrl ? recipe.video.thumbnailUrl : ""
-                }
-                source={recipe.video?.source ? recipe.video.source : ""}
-                type={recipe.video?.type ? recipe.video.type : ""}
-              />
-
-              <div
-                css={css`
-                  margin-bottom: 20px;
-                `}
-              >
-                <div
-                  css={css`
-                    font-size: 22px;
-                    font-weight: 700;
-                  `}
-                >
-                  {recipe.title}レシピ・作り方
-                </div>
-                <div
-                  css={css`
-                    font-size: 12px;
-                    margin-bottom: 20px;
-                    color: #635f5a;
-                  `}
-                >
-                  {recipe.subTitle}
-                </div>
-                <div
-                  css={css`
-                    margin-bottom: 20px;
-                  `}
-                >
-                  {recipe.introduction}
-                </div>
-                <div>調理時間：30分</div>
-                <div>費用目安：500円前後</div>
-                <button
-                  css={css`
-                    width: 300px;
-                    height: 50px;
-                    font-size: 14px;
-                    font-weight: 700;
-                    background-color: f0efef;
-                    border: none;
-                    border-radius: 25px;
-                  `}
-                >
-                  保存する
-                </button>
-              </div>
-              <div>
-                <div>
-                  <span>材料</span>
-                  <span>{recipe.ingredients?.servings}</span>
-                </div>
-                {recipe.ingredients.list.map((list, index) => {
-                  return (
-                    <IngredientElement
-                      key={index}
-                      item={list?.item}
-                      amount={list?.amount}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        </main>
-        <FooterContainerUpper />
-        <FooterContainerLower />
-      </>
-    );
-  }
+  return recipe ? (
+    <>
+      <Header />
+      {/* <div>{recipe.id}</div> */}
+      <FooterContainerUpper />
+      <FooterContainerLower />
+    </>
+  ) : (
+    <></>
+  );
 };
 
 export default RecipePage;

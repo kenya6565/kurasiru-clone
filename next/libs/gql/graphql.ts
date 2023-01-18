@@ -94,28 +94,7 @@ export type GetRecipeQueryVariables = Exact<{
 
 export type GetRecipeQuery = {
   __typename: "Query";
-  recipe?: {
-    __typename: "Recipe";
-    id?: string | null;
-    title?: string | null;
-    subTitle?: string | null;
-    introduction?: string | null;
-    video?: {
-      __typename: "Video";
-      thumbnailUrl?: string | null;
-      source?: string | null;
-      type?: string | null;
-    } | null;
-    ingredients?: {
-      __typename: "Ingredients";
-      servings?: string | null;
-      list?: Array<{
-        __typename: "Ingredient";
-        item?: string | null;
-        amount?: string | null;
-      } | null> | null;
-    } | null;
-  } | null;
+  recipe?: { __typename: "Recipe"; id?: string | null } | null;
 };
 
 export const GetRecipeDocument = {
@@ -155,60 +134,6 @@ export const GetRecipeDocument = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "id" } },
-                { kind: "Field", name: { kind: "Name", value: "title" } },
-                { kind: "Field", name: { kind: "Name", value: "subTitle" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "introduction" },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "video" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "thumbnailUrl" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "source" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "type" } },
-                    ],
-                  },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "ingredients" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "servings" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "list" },
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "item" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "amount" },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
               ],
             },
           },
