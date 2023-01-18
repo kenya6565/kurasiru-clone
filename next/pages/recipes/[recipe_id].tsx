@@ -17,6 +17,11 @@ const GET_RECIPE = graphql(`
       video {
         ...VideoComponent_Fragment
       }
+      ingredients {
+        list {
+          ...IngredientElement_Fragment
+        }
+      }
     }
   }
 `);
