@@ -20,18 +20,6 @@ export type Scalars = {
   Float: number;
 };
 
-export type Ingredient = {
-  __typename: "Ingredient";
-  amount?: Maybe<Scalars["String"]>;
-  item?: Maybe<Scalars["String"]>;
-};
-
-export type Ingredients = {
-  __typename: "Ingredients";
-  list?: Maybe<Array<Maybe<Ingredient>>>;
-  servings?: Maybe<Scalars["String"]>;
-};
-
 export type Mutation = {
   __typename: "Mutation";
   createTodo: Todo;
@@ -59,10 +47,6 @@ export type QueryRecipeArgs = {
 export type Recipe = {
   __typename: "Recipe";
   id?: Maybe<Scalars["ID"]>;
-  ingredients?: Maybe<Ingredients>;
-  introduction?: Maybe<Scalars["String"]>;
-  subTitle?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
   video?: Maybe<Video>;
 };
 
