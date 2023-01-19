@@ -14,12 +14,14 @@ export const DescriptionComponent_Fragment = graphql(`
 
 interface DescriptionComponentProps {
   fragment: FragmentType<typeof DescriptionComponent_Fragment>;
+  index: number;
 }
 
 export const DescriptionComponent = (
   props: DescriptionComponentProps
 ): JSX.Element => {
   const fragment = useFragment(DescriptionComponent_Fragment, props.fragment);
+  const { index } = props;
   return (
     <div
       css={css`

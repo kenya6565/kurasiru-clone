@@ -108,7 +108,7 @@ const RecipePage = ({ recipe }: RecipePageProps) => {
             {/* `recipe.video &&` がちょっと無理やり感あり */}
             {recipe.video && <VideoComponent fragment={recipe.video} />}
 
-            <DescriptionComponent fragment={recipe} />
+            <DescriptionComponent fragment={recipe} index={1} />
 
             {recipe.ingredients && (
               <IngredientListing fragment={recipe.ingredients} />
